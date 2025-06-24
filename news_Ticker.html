@@ -2,52 +2,51 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Fox & Breitbart News Ticker</title>
   <style>
-body {
-  margin: 0;
-  font-family: sans-serif;
-  background: #fff; /* White background */
-  color: black;      /* Black text */
-}
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: #fff; /* White background */
+      color: black;      /* Black text */
+    }
 
-.ticker-wrap {
-  width: 100%;
-  overflow: hidden;
-  background: #fff; /* White background */
-  /* Removed border-top and border-bottom */
-}
+    .ticker-wrap {
+      width: 100%;
+      overflow: hidden;
+      background: #fff; /* White background */
+      /* Removed border-top and border-bottom */
+    }
 
-.ticker {
-  display: inline-block;
-  white-space: nowrap;
-  animation: scroll 60s linear infinite;
-  padding-left: 100%;
-}
+    .ticker {
+      display: inline-block;
+      white-space: nowrap;
+      animation: scroll 60s linear infinite;
+      padding-left: 100%;
+    }
 
-.ticker-item {
-  display: inline-block;
-  margin-right: 4rem;
-}
+    .ticker-item {
+      display: inline-block;
+      margin-right: 4rem;
+    }
 
-.ticker-item a {
-  color: black;      /* Black text links */
-  text-decoration: none;
-  font-weight: bold;
-}
+    .ticker-item a {
+      color: black;      /* Black text links */
+      text-decoration: none;
+      font-weight: bold;
+    }
 
-.source-label {
-  color: #555;       /* Dark gray for source label */
-  font-size: 0.8rem;
-  margin-left: 0.5rem;
-}
+    .source-label {
+      color: #555;       /* Dark gray for source label */
+      font-size: 0.8rem;
+      margin-left: 0.5rem;
+    }
 
-@keyframes scroll {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
-}
-
+    @keyframes scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
   </style>
 </head>
 <body>
