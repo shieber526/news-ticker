@@ -38,11 +38,6 @@
       margin-right: 0.5rem;
     }
 
-    .source-label {
-      color: #555;
-      font-size: 0.8rem;
-    }
-
     .source-logo {
       width: 20px;
       height: auto;
@@ -101,11 +96,15 @@
         const div = document.createElement("div");
         div.className = "ticker-item";
 
-        const logo = item.source.toLowerCase().includes("fox")
-          ? `<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Fox_News_Channel_logo.svg/120px-Fox_News_Channel_logo.svg.png" alt="Fox News" class="source-logo" />`
-          : "";
+        let logo = "";
 
-        div.innerHTML = `${logo}<a href="${item.link}" target="_blank" rel="noopener noreferrer">${item.title}</a><span class="source-label">(${item.source})</span>`;
+        if (item.source.toLowerCase().includes("fox")) {
+          logo = `<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Fox_News_Channel_logo.svg/120px-Fox_News_Channel_logo.svg.png" alt="Fox News" class="source-logo" />`;
+        } else if (item.source.toLowerCase().includes("breitbart")) {
+          logo = `<img src="https://seeklogo.com/images/B/breitbart-logo-B48F48C7F8-seeklogo.com.png" alt="Breitbart" class="source-logo" />`;
+        }
+
+        div.innerHTML = `${logo}<a href="${item.link}" target="_blank" rel="noopener noreferrer">${item.title}</a>`;
         ticker.appendChild(div);
       });
     }
