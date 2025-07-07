@@ -42,6 +42,12 @@
       font-size: 0.8rem;
       margin-left: 0.5rem;
     }
+    .source-logo {
+      width: 20px;
+      height: auto;
+      margin-right: 0.4rem;
+      vertical-align: middle;
+}
 
     @keyframes scroll {
       0%   { transform: translateX(0); }
@@ -93,7 +99,11 @@ const sources = [
       allItems.forEach(item => {
         const div = document.createElement("div");
         div.className = "ticker-item";
-        div.innerHTML = `<a href="${item.link}" target="_blank">${item.title}</a><span class="source-label">(${item.source})</span>`;
+        const logo =
+          item.source === "Fox News"
+          ? `<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Fox_News_Channel_logo.svg/120px-Fox_News_Channel_logo.svg.png" alt="Fox News" class="source-logo" />`
+          : "";
+        div.innerHTML = `${logo}<a href="${item.link}" target="_blank">${item.title}</a><span class="source-label">(${item.source})</span>`;
         ticker.appendChild(div);
       });
     }
