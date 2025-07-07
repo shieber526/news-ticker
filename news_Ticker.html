@@ -8,15 +8,14 @@
     body {
       margin: 0;
       font-family: sans-serif;
-      background: #fff; /* White background */
-      color: black;      /* Black text */
+      background: #fff;
+      color: black;
     }
 
     .ticker-wrap {
       width: 100%;
       overflow: hidden;
-      background: #fff; /* White background */
-      /* Removed border-top and border-bottom */
+      background: #fff;
     }
 
     .ticker {
@@ -27,27 +26,29 @@
     }
 
     .ticker-item {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
       margin-right: 4rem;
     }
 
     .ticker-item a {
-      color: black;      /* Black text links */
+      color: black;
       text-decoration: none;
       font-weight: bold;
+      margin-right: 0.5rem;
     }
 
     .source-label {
-      color: #555;       /* Dark gray for source label */
+      color: #555;
       font-size: 0.8rem;
-      margin-left: 0.5rem;
     }
+
     .source-logo {
       width: 20px;
       height: auto;
       margin-right: 0.4rem;
       vertical-align: middle;
-}
+    }
 
     @keyframes scroll {
       0%   { transform: translateX(0); }
@@ -61,16 +62,16 @@
   </div>
 
   <script>
-const sources = [
-  {
-    name: "Fox News",
-    rss: "https://feeds.foxnews.com/foxnews/latest"
-  },
-  {
-    name: "Breitbart",
-    rss: "https://feeds.feedburner.com/breitbart"
-  }
-];
+    const sources = [
+      {
+        name: "Fox News",
+        rss: "https://feeds.foxnews.com/foxnews/latest"
+      },
+      {
+        name: "Breitbart",
+        rss: "https://feeds.feedburner.com/breitbart"
+      }
+    ];
 
     const API_BASE = "https://api.rss2json.com/v1/api.json?rss_url=";
 
@@ -99,11 +100,12 @@ const sources = [
       allItems.forEach(item => {
         const div = document.createElement("div");
         div.className = "ticker-item";
-        const logo =
-          item.source === "Fox News"
+
+        const logo = item.source.toLowerCase().includes("fox")
           ? `<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Fox_News_Channel_logo.svg/120px-Fox_News_Channel_logo.svg.png" alt="Fox News" class="source-logo" />`
           : "";
-        div.innerHTML = `${logo}<a href="${item.link}" target="_blank">${item.title}</a><span class="source-label">(${item.source})</span>`;
+
+        div.innerHTML = `${logo}<a href="${item.link}" target="_blank" rel="noopener noreferrer">${item.title}</a><span class="source-label">(${item.source})</span>`;
         ticker.appendChild(div);
       });
     }
